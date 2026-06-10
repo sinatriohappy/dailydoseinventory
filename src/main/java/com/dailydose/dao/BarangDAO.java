@@ -182,6 +182,30 @@ public class BarangDAO {
         }
     }
 
+    // Id Otomatis
+    public String generateNextIdBarang() {
+        String sql = "SELECT id_barang FROM barang";
+        int maxId = 0;
+        try (Statement stmt = conn.createStatement();
+             ResultSet rs = stmt.executeQuery(sql)) {
+            while (rs.next()) {
+                String id = rs.getString("id_barang");
+                // Ambil angka dari ID yang ada
+                String numberOnly = id.replaceAll("[^0-9]", "");
+                if (!numberOnly.isEmpty()) {
+                    int num = Integer.parseInt(numberOnly);
+                    if (num > maxId) {
+                        maxId = num;
+                    }
+                }
+            }
+        } catch (SQLException e) {
+            System.err.println("❌ Gagal generate ID: " + e.getMessage());
+        }
+        // Format ID baru, misal: B001, B002, B015
+        return String.format("B%03d", maxId + 1);
+    }
+
     // =========================================================
     //  HELPER — ResultSet → Barang (subclass yang sesuai)
     // =========================================================

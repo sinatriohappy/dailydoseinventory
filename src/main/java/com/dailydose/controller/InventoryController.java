@@ -115,6 +115,9 @@ public class InventoryController implements Initializable {
 
         // Load data dari database
         muatSemuaBarang();
+
+        // Siapkan form awal dengan ID terisi otomatis
+        handleReset();
     }
 
     // =========================================================
@@ -285,7 +288,7 @@ public class InventoryController implements Initializable {
     // =========================================================
     @FXML
     private void handleReset() {
-        txtIdBarang.clear();
+        txtIdBarang.setText(barangDAO.generateNextIdBarang());
         txtIdBarang.setDisable(false);
         txtNamaBarang.clear();
         txtHarga.clear();

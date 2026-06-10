@@ -16,7 +16,7 @@ import java.sql.Statement;
 public class DatabaseHelper {
 
     // Path file SQLite — simpan di folder yang sama dengan JAR
-    private static final String DB_URL = "jdbc:sqlite:InventoryDB.db";
+    private static final String DB_URL = "jdbc:sqlite:D:\\Prak RPL-BO\\Project Prak\\dailydoseinventory\\InventoryDB.db";
 
     // Instance tunggal (Singleton Pattern)
     private static DatabaseHelper instance;

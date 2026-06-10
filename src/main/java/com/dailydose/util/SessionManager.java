@@ -22,10 +22,17 @@ public class SessionManager {
         return instance;
     }
 
-    public User getCurrentUser()               { return currentUser; }
-    public void setCurrentUser(User user)      { this.currentUser = user; }
+    public User getCurrentUser() {
+        return currentUser;
+    }
 
-    public void logout()                       { this.currentUser = null; }
+    public void setCurrentUser(User user) {
+        this.currentUser = user;
+    }
+
+    public void logout() {
+        this.currentUser = null;
+    }
 
     /** Cek apakah user yang login adalah Admin */
     public boolean isAdmin() {
